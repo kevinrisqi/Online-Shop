@@ -22,6 +22,14 @@ class Item extends CI_Controller {
         $this->load->view('admin/templates/index',$data);
         
     }
+    
+    public function addItem()
+    {
+        $data['title'] = 'Item - Page';
+        $data['judul'] = 'Item';
+        $data['content'] = 'admin/additem';
+        $this->load->view('admin/templates/index',$data);
+    }
 
 }
 

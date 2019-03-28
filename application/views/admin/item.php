@@ -4,6 +4,7 @@
             <div class="box-header">
               <h3 class="box-title">Item List</h3>
               <hr>
+              <a href="<?= base_url('') ?>admin/item/addItem" class="btn btn-primary">Add Item</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -13,6 +14,7 @@
                   <th>No</th>
                   <th>Nama</th>
                   <th>Harga</th>
+                  <th>Status</th>
                   <th>Stok</th>
                   <th>Kategori</th>
                   <th>Aksi</th>
@@ -25,6 +27,7 @@
                   <td><?php echo $nomor ?></td>
                   <td><?php echo $produk['nama_produk'] ?></td>
                   <td><?php echo $produk['harga'] ?></td>
+                  <td><?php echo $produk['status'] ?></td>
                   <td><?php echo $produk['stok'] ?></td>
                   <td><?php echo $produk['nama_kategori'] ?></td>
                   <td>
