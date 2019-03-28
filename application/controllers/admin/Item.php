@@ -9,6 +9,8 @@ class Item extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Item_model');
+        $this->load->model('Kategori_model');
+        $this->load->library('form_validation');
         
     }
     
@@ -25,10 +27,25 @@ class Item extends CI_Controller {
     
     public function addItem()
     {
-        $data['title'] = 'Item - Page';
-        $data['judul'] = 'Item';
-        $data['content'] = 'admin/additem';
-        $this->load->view('admin/templates/index',$data);
+        $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
+        $this->form_validation->set_rules('stok', 'Stok', 'required|numeric');
+        $this->form_validation->set_rules('berat', 'Berat', 'required|numeric');
+        $this->form_validation->set_rules('kategori', 'Kategori', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('foto', 'Foto', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+        
+        if ($this->form_validation->run() == FALSE) {
+            $data['category'] = $this->Kategori_model->getAllCategory();
+            $data['title'] = 'Item - Page';
+            $data['judul'] = 'Item';
+            $data['content'] = 'admin/additem';
+            $this->load->view('admin/templates/index',$data);
+        } else {
+            echo "Success";
+        }
+        
     }
 
 }

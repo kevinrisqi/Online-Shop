@@ -8,7 +8,18 @@
             <!-- /.box-header -->
             <div class="box-body">
 
-    <form class="form-horizontal form-label-left" action="" enctype="multipart/form-data" method="post">
+            <form class="form-horizontal form-label-left" action="" enctype="multipart/form-data" method="post">
+
+        <div class="form-group">
+            <label class="col-md-7 col-sm-6 col-xs-12" >
+            <?php if(validation_errors()): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= validation_errors(); ?>
+                </div>
+            <?php endif; ?>
+            </label>
+            
+         </div>
 
          <div class="form-group">
             <label class="control-label col-md-2 col-sm-2 col-xs-12" >Nama Item
@@ -48,8 +59,9 @@
             <div class="col-md-4 col-sm-6">
                <select name="kategori" class="form-control">
                   <option value="">--Pilih Kategori--</option>
-                  <option value="1" >Processor</option>
-                  <option value="2" >VGA</option>
+                  <?php foreach ($category as $kategori): ?>
+                     <option value="<?= $kategori['id_kategori'] ?>" ><?= $kategori['nama_kategori'] ?></option>
+                  <?php endforeach; ?>
                </select>
             </div>
          </div>
