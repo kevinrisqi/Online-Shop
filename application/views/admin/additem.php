@@ -59,8 +59,9 @@
             <div class="col-md-4 col-sm-6">
                <select name="kategori" class="form-control">
                   <option value="">--Pilih Kategori--</option>
-                  <option value="1" >Processor</option>
-                  <option value="2" >VGA</option>
+                  <?php foreach ($category as $kategori): ?>
+                     <option value="<?= $kategori['id_kategori'] ?>" ><?= $kategori['nama_kategori'] ?></option>
+                  <?php endforeach; ?>
                </select>
             </div>
          </div>

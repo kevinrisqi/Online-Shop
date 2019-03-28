@@ -9,6 +9,7 @@ class Item extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Item_model');
+        $this->load->model('Kategori_model');
         $this->load->library('form_validation');
         
     }
@@ -36,6 +37,7 @@ class Item extends CI_Controller {
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         
         if ($this->form_validation->run() == FALSE) {
+            $data['category'] = $this->Kategori_model->getAllCategory();
             $data['title'] = 'Item - Page';
             $data['judul'] = 'Item';
             $data['content'] = 'admin/additem';
