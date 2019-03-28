@@ -8,7 +8,18 @@
             <!-- /.box-header -->
             <div class="box-body">
 
-    <form class="form-horizontal form-label-left" action="" enctype="multipart/form-data" method="post">
+            <form class="form-horizontal form-label-left" action="" enctype="multipart/form-data" method="post">
+
+        <div class="form-group">
+            <label class="col-md-7 col-sm-6 col-xs-12" >
+            <?php if(validation_errors()): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= validation_errors(); ?>
+                </div>
+            <?php endif; ?>
+            </label>
+            
+         </div>
 
          <div class="form-group">
             <label class="control-label col-md-2 col-sm-2 col-xs-12" >Nama Item
