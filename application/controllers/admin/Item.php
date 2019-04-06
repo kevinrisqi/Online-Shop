@@ -31,7 +31,7 @@ class Item extends CI_Controller {
         $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
         $this->form_validation->set_rules('stok', 'Stok', 'required|numeric');
         $this->form_validation->set_rules('berat', 'Berat', 'required|numeric');
-        $this->form_validation->set_rules('kategori', 'Kategori', 'required');
+        $this->form_validation->set_rules('id_kategori', 'Id_Kategori', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
         $this->form_validation->set_rules('foto', 'Foto', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
@@ -43,7 +43,8 @@ class Item extends CI_Controller {
             $data['content'] = 'admin/additem';
             $this->load->view('admin/templates/index',$data);
         } else {
-            echo "Success";
+            $this->Item_model->addItem();
+            redirect('admin/item');
         }
         
     }
