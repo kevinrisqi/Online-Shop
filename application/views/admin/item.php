@@ -4,6 +4,10 @@
             <div class="box-header">
               <h3 class="box-title">Item List</h3>
               <hr>
+              <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');
+              ?>"></div>
+              <?php if($this->session->flashdata('flash')): ?>
+              <?php endif; ?>
               <a href="<?= base_url('') ?>admin/item/addItem" class="btn btn-primary">Add Item</a>
             </div>
             <!-- /.box-header -->

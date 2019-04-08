@@ -33,7 +33,7 @@ class Item extends CI_Controller {
         $this->form_validation->set_rules('berat', 'Berat', 'required|numeric');
         $this->form_validation->set_rules('id_kategori', 'Id_Kategori', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('foto', 'Foto', 'required');
+        // $this->form_validation->set_rules('foto', 'Foto', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         
         if ($this->form_validation->run() == FALSE) {
@@ -44,6 +44,7 @@ class Item extends CI_Controller {
             $this->load->view('admin/templates/index',$data);
         } else {
             $this->Item_model->addItem();
+            $this->session->set_flashdata('flash', 'Ditambahakan');
             redirect('admin/item');
         }
         
