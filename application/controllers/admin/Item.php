@@ -31,9 +31,9 @@ class Item extends CI_Controller {
         $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
         $this->form_validation->set_rules('stok', 'Stok', 'required|numeric');
         $this->form_validation->set_rules('berat', 'Berat', 'required|numeric');
-        $this->form_validation->set_rules('kategori', 'Kategori', 'required');
+        $this->form_validation->set_rules('id_kategori', 'Id_Kategori', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('foto', 'Foto', 'required');
+        // $this->form_validation->set_rules('foto', 'Foto', 'required');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         
         if ($this->form_validation->run() == FALSE) {
@@ -43,12 +43,22 @@ class Item extends CI_Controller {
             $data['content'] = 'admin/additem';
             $this->load->view('admin/templates/index',$data);
         } else {
-            echo "Success";
+            $this->Item_model->addItem();
+            $this->session->set_flashdata('flash', 'Ditambahakan');
+            redirect('admin/item');
         }
         
     }
 
+    public function deleteItem($id)
+    {
+        $this->Item_model->deleteItem($id);
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('admin/item');
+    }
+
 }
+
 
 /* End of file Item.php */
 

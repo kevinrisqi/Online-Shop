@@ -4,6 +4,10 @@
             <div class="box-header">
               <h3 class="box-title">Item List</h3>
               <hr>
+              <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');
+              ?>"></div>
+              <?php if($this->session->flashdata('flash')): ?>
+              <?php endif; ?>
               <a href="<?= base_url('') ?>admin/item/addItem" class="btn btn-primary">Add Item</a>
             </div>
             <!-- /.box-header -->
@@ -33,7 +37,7 @@
                   <td>
                       <a href="#" class="btn btn-primary">Detail</a>
                       <a href="#" class="btn btn-warning">Ubah</a>
-                      <a href="#" class="btn btn-danger">Hapus</a>
+                      <a href="<?= base_url('') ?>admin/item/deleteItem/<?= $produk['id_produk'] ?>" class="btn btn-danger tombol-hapus">Hapus</a>
                   </td>
                 </tr>
                 <?php $nomor++; ?>
