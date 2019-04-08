@@ -48,6 +48,12 @@ class Item_model extends CI_Model {
             $this->db->insert('produk', $data);
             }
     }
+
+    public function deleteItem($id)
+    {
+        $this->db->where('id_produk', $id);
+        $this->db->delete('produk');
+    }
         
     
 

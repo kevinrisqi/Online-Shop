@@ -50,7 +50,15 @@ class Item extends CI_Controller {
         
     }
 
+    public function deleteItem($id)
+    {
+        $this->Item_model->deleteItem($id);
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('admin/item');
+    }
+
 }
+
 
 /* End of file Item.php */
 
