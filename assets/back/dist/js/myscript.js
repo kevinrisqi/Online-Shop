@@ -23,7 +23,7 @@ $('.tombol-hapus').on('click', function (e) {
         	type: 'warning',
         	showCancelButton: true,
         	confirmButtonColor: '#3085d6',
-        	cancelButtonColor: '#d33',
+            cancelButtonColor: '#d33',
         	confirmButtonText: 'Hapus data !'
         }).then((result) => {
         			if (result.value) {

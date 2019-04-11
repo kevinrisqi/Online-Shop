@@ -55,7 +55,10 @@ class Item_model extends CI_Model {
         $this->db->delete('produk');
     }
         
-    
+    public function getItemById($id)
+    {
+        return $this->db->get('produk', ['id_produk' => $id])->row_array();
+    }
 
 }
 

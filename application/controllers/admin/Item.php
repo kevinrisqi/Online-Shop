@@ -39,12 +39,39 @@ class Item extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['category'] = $this->Kategori_model->getAllCategory();
             $data['title'] = 'Item - Page';
-            $data['judul'] = 'Item';
+            $data['judul'] = 'Form Add Item';
             $data['content'] = 'admin/additem';
             $this->load->view('admin/templates/index',$data);
         } else {
             $this->Item_model->addItem();
             $this->session->set_flashdata('flash', 'Ditambahakan');
+            redirect('admin/item');
+        }
+        
+    }
+
+    public function updateItem($id)
+    {
+        $data['item'] = $this->Item_model->getItemById($id);
+
+        $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
+        $this->form_validation->set_rules('stok', 'Stok', 'required|numeric');
+        $this->form_validation->set_rules('berat', 'Berat', 'required|numeric');
+        $this->form_validation->set_rules('id_kategori', 'Id_Kategori', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        // $this->form_validation->set_rules('foto', 'Foto', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+        
+        if ($this->form_validation->run() == FALSE) {
+            $data['category'] = $this->Kategori_model->getAllCategory();
+            $data['title'] = 'Item - Page';
+            $data['judul'] = 'Form Update Item';
+            $data['content'] = 'admin/ubahitem';
+            $this->load->view('admin/templates/index',$data);
+        } else {
+            $this->Item_model->addItem();
+            $this->session->set_flashdata('flash', 'Diubah');
             redirect('admin/item');
         }
         
@@ -56,6 +83,8 @@ class Item extends CI_Controller {
         $this->session->set_flashdata('flash', 'Dihapus');
         redirect('admin/item');
     }
+
+    // public function detail
 
 }
 
