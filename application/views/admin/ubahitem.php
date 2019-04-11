@@ -25,7 +25,7 @@
 						<label class="control-label col-md-2 col-sm-2 col-xs-12">Nama Item
 						</label>
 						<div class="col-md-7 col-sm-6 col-xs-12">
-							<input type="text" class="form-control col-md-7 col-xs-12" name="nama_produk" value="">
+							<input type="text" class="form-control col-md-7 col-xs-12" name="nama_produk" value="<?= $item['nama_produk']; ?>">
 							<small class="form-text text-danger"><?= form_error('nama_produk'); ?></small>
 						</div>
 					</div>
@@ -35,7 +35,7 @@
 						<label class="control-label col-md-2 col-sm-2 col-xs-12">Harga Item
 						</label>
 						<div class="col-md-4 col-sm-6">
-							<input class="form-control col-md-7 col-xs-12" type="number" name="harga" value="">
+							<input class="form-control col-md-7 col-xs-12" type="number" name="harga" value="<?= $item['harga']; ?>">
 							<small class="form-text text-danger"><?= form_error('harga'); ?></small>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 						<label class="control-label col-md-2 col-sm-2 col-xs-12">Stok Item
 						</label>
 						<div class="col-md-4 col-sm-6">
-							<input class="form-control col-md-7 col-xs-12" type="number" name="stok" value="">
+							<input class="form-control col-md-7 col-xs-12" type="number" name="stok" value="<?= $item['stok']; ?>">
 							<small class="form-text text-danger"><?= form_error('stok'); ?></small>
 						</div>
 					</div>
@@ -52,7 +52,7 @@
 					<div class="form-group">
 						<label class="control-label col-md-2 col-sm-2 col-xs-12">Berat Item</label>
 						<div class="col-md-4 col-sm-6">
-							<input class="form-control col-md-7" type="number" name="berat" value="">
+							<input class="form-control col-md-7" type="number" name="berat" value="<?= $item['berat']; ?>">
 							<small class="form-text text-danger"><?= form_error('berat'); ?></small>
 							<p class="help-text">* Berat dalam satuan Gram</p>
 						</div>
@@ -97,7 +97,9 @@
 					<div class="form-group">
 						<label class="control-label col-md-2 col-sm-2 col-xs-12">Deskripsi</label>
 						<div class="col-md-9 col-sm-6">
-							<textarea class="form-control" rows="4" name="deskripsi"></textarea>
+							<textarea class="form-control" rows="4" name="deskripsi">
+								<?= $item['deskripsi']; ?>
+							</textarea>
 							<small class="form-text text-danger"><?= form_error('deskripsi'); ?></small>
 						</div>
 					</div>
