@@ -9,7 +9,7 @@ class Item extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('Admin_model');
-        $this->load->model('Kategori_model');
+        // $this->load->model('Kategori_model');
         $this->load->library('form_validation');
         
     }
@@ -66,11 +66,60 @@ class Item extends CI_Controller {
             redirect('admin/item');
             }
         }
+
+    }
+    
+    public function detailItem()
+    {
+        $id = $this->uri->segment(4);
+        $data['details'] = $this->Admin_model->getById($id);
+        $data['title'] = 'Item - Page';
+        $data['judul'] = 'Detail Item';
+        $data['content'] = 'admin/detailItem';
+        $this->load->view('admin/templates/index',$data);
+        // $data['item'] = $this->Admin_model->getJoinItem();
+        // $data['title'] = 'Item - Page';
+        // $data['judul'] = 'Item';
+        // $data['content'] = 'admin/detailItem';
+        // $this->load->view('admin/templates/index',$data);
     }
 
+    public function deleteItem($id)
+    {
+        $row = 'User-icon.png';
+        @unlink(base_url('assets/img/product/User-icon.png'));
+        $this->Admin_model->delete($id);
+        $this->session->set_flashdata('flash', 'Dihapus');
+        redirect('admin/item');
+    }
 
+    public function updateItem()
+    {
+        $id = $this->uri->segment(4);
+        $data['item'] = $this->Admin_model->getById($id);
 
-
+        $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
+        $this->form_validation->set_rules('stok', 'Stok', 'required|numeric');
+        $this->form_validation->set_rules('berat', 'Berat', 'required|numeric');
+        $this->form_validation->set_rules('id_kategori', 'Id_Kategori', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        // $this->form_validation->set_rules('foto', 'Foto', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+        
+        if ($this->form_validation->run() == FALSE) {
+            $data['category'] = $this->Admin_model->getAll('kategori_produk');
+            $data['title'] = 'Item - Page';
+            $data['judul'] = 'Form Update Item';
+            $data['content'] = 'admin/ubahitem';
+            $this->load->view('admin/templates/index',$data);
+        } else {
+            $this->Item_model->update('');
+            $this->session->set_flashdata('flash', 'Diubah');
+            redirect('admin/item');
+        }
+        
+    }
 
 
 

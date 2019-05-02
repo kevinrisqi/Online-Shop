@@ -12,6 +12,14 @@ class Admin_model extends CI_Model {
         $this->db->join('kategori_produk', 'produk.id_kategori = kategori_produk.id_kategori');
         return $query = $this->db->get()->result_array();
     }
+
+    public function getJoinTransaction()
+    {
+        $this->db->select('*');
+        $this->db->from('pembelian');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan = pembelian.id_pelanggan');
+        return $query = $this->db->get()->result_array();
+    }
     
     public function getAll($table = '')
     {
@@ -21,6 +29,18 @@ class Admin_model extends CI_Model {
     public function add($table = '', $data = '')
     {
         $this->db->insert($table, $data);
+    }
+
+    public function getById($id = '')
+    {
+        $query = $this->db->query("SELECT * FROM produk JOIN kategori_produk ON produk.id_kategori = kategori_produk.id_kategori WHERE id_produk = '$id'");
+        // $this->db->get_where($table, array($key => $id))->result_array();
+        return $query->result_array();
+    }
+
+    public function delete($id)
+    {
+        $this->db->delete('produk', ['id_produk' => $id]);
     }
 
 

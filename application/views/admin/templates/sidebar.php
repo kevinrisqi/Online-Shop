@@ -29,14 +29,14 @@
             <span>Item Management</span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="">
+          <a href="<?= base_url() ?>admin/transaction">
             <i class="fa fa-exchange"></i> 
             <span>Transaction</span>
           </a>
         </li>
-        <li class="treeview">
-          <a href="#">
+        <li class="">
+          <a href="<?= base_url() ?>admin/user">
             <i class="fa fa-users"></i> 
             <span>User Management</span>
           </a>

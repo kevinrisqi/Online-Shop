@@ -20,7 +20,7 @@
 						</label>
 
 					</div> -->
-
+					<?php foreach($item as $item): ?>
 					<div class="form-group">
 						<label class="control-label col-md-2 col-sm-2 col-xs-12">Nama Item
 						</label>
@@ -103,7 +103,7 @@
 							<small class="form-text text-danger"><?= form_error('deskripsi'); ?></small>
 						</div>
 					</div>
-
+					<?php endforeach; ?>
 					<hr>
 
 					<div class="form-group">
